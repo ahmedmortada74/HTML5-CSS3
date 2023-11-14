@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Regestar login
+        </title>
+        <meta   charset="utf-8">
+<style>
+#a1
+{
+    margin-left: 400px;
+    margin-right: 400px;
+    margin-top: 150px;
+    border-radius: 50px;
+}
+
+
+</style>
+    </head>
+    <body style="background-image: url(./abstract-html5-webdesign-wallpaper-preview.jpg);">
+        <form id="a1"  method="get" algin="center">
+            <fieldset algin="center">
+<legend  align="center" style="color: rgb(246, 249, 252);">Registration Form</legend>
+ <br>
+   <label for="email" style="color: aliceblue;">Email:</label>
+   <!-- <br> -->
+   <input type="email" id="email" name="email" placeholder="ahmed**34@gmail.com" style="border-radius:100px;">
+   <br><br>
+   <label for="password" style="color: aliceblue;">password:</label> 
+   <!-- <br> -->
+   <input type="password" id="password" name="password" style="border-radius:100px;">
+   <br><br>
+
+
+        <span style="color: aliceblue;">Gender:</span>
+        <!-- <br><br> -->
+        <input type="radio" id="male" name="Gender" value="Male">
+        <label for="male"  style="color: aliceblue;">Male</label>
+        <!-- <br><br> -->
+        <input type="radio" id=" female" name="Gender" value=" Female">
+        <label for=" female"  style="color: aliceblue;"> Female</label>
+        <br><br>
+       <span style="color: aliceblue;">Faculty:</span> 
+        <select name="Faculty" style="border-radius:100px;">
+        <option value="arts">Arts</option>
+        <option value="science">Science</option>
+        <option value="engineering">Engineering</option>
+        <option value="arts">Arts</option>
+        <option value="science">Science</option>
+        <option value="engineering">Engineering</option>
+        <option value="arts">Arts</option>
+        <option value="science">Science</option>
+        <option value="engineering">Engineering</option>
+        <option value="arts">Arts</option>
+        <option value="science">Science</option>
+        <option value="engineering">Engineering</option>
+    </select>
+    <br> <br>
+    <label for="Cantry" style="color: aliceblue;">Cantry:</label> 
+    <input type="text" list="arab" autofocus  placeholder="Enter your cantry" style="border-radius:100px;">
+            <datalist id="arab">
+                <option value="EGT"></option>
+                <option value="USA"></option>
+                <option value="UAE"></option>
+            </datalist>
+            <br> <br>
+            <label for="tel" style="color: aliceblue;">Tel:</label> 
+            <input type="tel" name="" id="tel" placeholder="555-555-555" style="border-radius:100px;">
+            <br> <br>
+            <label for="Age" style="color: aliceblue;">Age:</label>
+            <input type="number" name="" id="" min="18" max="60" style="border-radius:100px;">
+            <!-- <br> <br> -->
+        <progress max="20" value="90" id="upload"></progress>
+        <br> <br>
+        
+      <input type="checkbox" accesskey="k" id="terms">
+<label for="terms"><a href="https://www.linledin.com" style="color: aliceblue;">I agree For Terms and Conditions  </a> </label>
+<br><br>
+<a href="./day2-3.html" target="_blank"> <input type="submit" value="Submit" style="border-radius:100px;"></a>
+<input type="reset" value="Reset" style="border-radius:100px;">
+
+        </form>
+        <br>
+        <br>
+    </fieldset>
+    <script>
+            var prog=document.getElementById("upload")
+            prog.value=0
+            setInterval(function(){
+                prog.value+=0.1
+            },10)
+        </script>
+    </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draw and Erase on Drag</title>
+    <style>
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="clearfix"></div>
+
+    <canvas id="canvas" width="400px" height="400px"></canvas>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+        let isDrawing = false;
+
+        // Function to draw or erase on the canvas
+        function drawOrErase(event) {
+            if (!isDrawing) return;
+
+            context.lineWidth = 10;
+
+            if (event.buttons === 1) {
+                // Left-click to draw (left mouse button)
+                context.strokeStyle = 'blue';
+            } else if (event.buttons === 2) {
+                // Right-click to erase (right mouse button)
+                context.strokeStyle = 'rgba(255, 255, 255, 0)'; // Erase with transparent color
+            }
+
+            context.lineTo(event.clientX - canvas.getBoundingClientRect().left, event.clientY - canvas.getBoundingClientRect().top);
+            context.stroke();
+            context.beginPath();
+            context.moveTo(event.clientX - canvas.getBoundingClientRect().left, event.clientY - canvas.getBoundingClientRect().top);
+        }
+
+        // Event listeners
+        canvas.addEventListener('mousedown', (event) => {
+            isDrawing = true;
+            context.beginPath();
+            context.moveTo(event.clientX - canvas.getBoundingClientRect().left, event.clientY - canvas.getBoundingClientRect().top);
+        });
+
+        canvas.addEventListener('mousemove', drawOrErase);
+        canvas.addEventListener('mouseup', () => {
+            isDrawing = false;
+            context.beginPath();
+        });
+        canvas.addEventListener('contextmenu', (event) => event.preventDefault()); // Prevent context menu on right-click
+    </script>
+</body>
+</html>

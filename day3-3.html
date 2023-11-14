@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>day3-3</title>
+    <style>
+      
+
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        canvas {
+            border: 1px solid rgb(136, 0, 0);
+        }
+    </style>
+</head>
+<body>
+    <div class="float-left"></div>
+    <div class="float-right"></div>
+
+    <div class="clearfix"></div>
+
+    <canvas id="canvas" width="400px" height="400px"></canvas>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+        let isDrawing = false;
+
+        // Function to draw on the canvas
+        function draw(event) {
+            if (!isDrawing) return;
+
+            context.lineWidth =5;
+          
+
+            if (event.buttons === 1) {
+                // Left-click to draw (left mouse button)
+                context.strokeStyle = 'blue';
+            } 
+
+            context.lineTo(event.clientX - canvas.getBoundingClientRect().left, event.clientY - canvas.getBoundingClientRect().top);
+            context.stroke();
+            context.beginPath();
+            context.moveTo(event.clientX - canvas.getBoundingClientRect().left, event.clientY - canvas.getBoundingClientRect().top);
+        }
+        function erase(event) {
+            const x = event.clientX - canvas.getBoundingClientRect().left;
+            const y = event.clientY - canvas.getBoundingClientRect().top;
+            const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.putImageData(imageData, 0, 0);
+            context.globalCompositeOperation = 'destination-out';
+            context.beginPath();
+            context.arc(x, y, 10, 0, 2 * Math.PI);
+            context.fill();
+            context.globalCompositeOperation = 'source-over';
+        }
+        canvas.addEventListener('mousedown', (event) => {
+            isDrawing = true;
+            context.beginPath();
+            context.moveTo(event.clientX - canvas.getBoundingClientRect().left, event.clientY - canvas.getBoundingClientRect().top);
+        });
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', () => isDrawing = false);
+        canvas.addEventListener('mouseout', () => isDrawing = false);
+        canvas.addEventListener('mousemove', erase);
+    </script>
+</body>
+</html>

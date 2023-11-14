@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>day3-2</title>
+</head>
+<body>
+  <div style="margin: 250px;">
+  <canvas id="myCanvas" width="500" height="500" style="border:1px solid #af6262; "></canvas>
+</div>
+<script>
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+
+var imgSad = new Image();
+imgSad.src = 'image1.jpg';
+
+var imgSmile = new Image();
+imgSmile.src = 'image2.jpg';
+
+imgSad.onload = function() {
+  ctx.drawImage(imgSad, 20, 20);
+};
+
+canvas.onmousedown = function() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(imgSmile, 20, 20, imgSmile.width * 1.2, imgSmile.height * 1.2);
+};
+
+canvas.onmouseup = function() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(imgSad, 20,20);
+};
+</script>
+
+</canvas>
+
+</body>
+</html>
+
+

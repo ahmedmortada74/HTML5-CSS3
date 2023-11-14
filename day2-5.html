@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+#ahmed1 {
+    margin: 290px;
+    width: 270px;
+    justify-content: space-between;
+   border-radius: 30px;
+    display: flex;
+  
+    
+}
+
+#ahmed2 {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    transition: transform 1s;
+}
+
+#ahmed3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    </style>
+</head>
+<body bgcolor="#d7ccc8">
+    <div id="ahmed1" style= "background-color: aliceblue; ">
+        <img id="ahmed2" src="./344686197_212344711504285_7237237059562620585_n.jpg" alt="photo" onclick="hideText()">
+        <div id="ahmed3">
+            <p id="ahmed4" style="background-color: cadetblue; border-radius: 5px;">Ahmed Abdelgaber Mortada</p>
+            <button  id="closeButton"  onclick="showText()" style="background-color: rgb(5, 194, 147); border-radius: 15px;">❌</button>
+        </div>
+    </div>
+   
+    
+    <script> 
+ document.getElementById('closeButton').addEventListener('click', function() {
+    document.getElementById('ahmed2').style.transform = 'translateX(0)';
+});
+
+document.getElementById('ahmed2').addEventListener('click', function() {
+    document.getElementById('ahmed2').style.transform = 'translateX(190px)';
+});
+function hideText() {
+      var text = document.getElementById("ahmed4");
+      text.style.display = "none";
+    }
+function showText() {
+      var text = document.getElementById("ahmed4");
+      text.style.display = "block";
+    }
+
+   
+    </script>
+    
+</body>
+</html>
